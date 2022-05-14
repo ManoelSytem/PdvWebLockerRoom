@@ -1,0 +1,36 @@
+﻿@using BackOfficeFoodService.Enum;
+@{
+    string text = (string)TempData["FlashMessage.Text"];
+    string cssClass = null;
+
+    if (!string.IsNullOrWhiteSpace(text))
+    {
+        FlashMessageType type = (FlashMessageType)TempData["FlashMessage.Type"];
+        cssClass = type.ToString().ToLower();
+    }
+
+
+    if (!string.IsNullOrWhiteSpace(text))
+    {
+        if (cssClass == "success")
+        {
+            <div class="alert alert-success" role="alert">
+                @text
+            </div>
+        }
+    }
+    if (cssClass == "error")
+    {
+        <div class="alert alert-danger" role="alert">
+            @text
+        </div>
+    }
+    if (cssClass == "warning")
+    {
+        <div class="alert alert-warning" role="alert">
+            @text
+        </div>
+    }
+
+}
+

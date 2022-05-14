@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\www\Servico\FoodServiceApi</_PublishTargetUrl>
+    <History>True|2021-12-03T18:10:53.7842443Z;False|2021-12-03T15:10:32.9476270-03:00;True|2021-12-02T12:04:16.0488217-03:00;True|2021-12-02T11:55:32.3493100-03:00;False|2021-12-02T11:54:52.6930932-03:00;False|2021-12-02T11:54:33.2489524-03:00;False|2021-12-02T11:54:15.1081428-03:00;True|2021-12-02T11:52:13.2213383-03:00;False|2021-12-02T11:51:46.6863276-03:00;True|2021-12-02T11:33:38.9361469-03:00;True|2021-11-29T16:48:50.9088322-03:00;</History>
+  </PropertyGroup>
+</Project>

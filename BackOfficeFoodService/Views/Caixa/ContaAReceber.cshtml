@@ -1,0 +1,70 @@
+﻿@model BackOfficeFoodService.Models.ContaModel
+
+@{
+    ViewData["Title"] = "ContaAReceber";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Caixa</h1>
+
+<h4>Conta a receber</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="ContaAReceber">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-4">
+                        <label asp-for="seqAbreMesa" class="control-label"></label>
+                        <input type="number" asp-for="seqAbreMesa" class="valor form-control" />
+                        <span asp-validation-for="seqAbreMesa" class="text-danger"></span>
+                    </div>
+                    <div class="col-4 row justify-content-center">
+                        <button onclick="BuscarConta()" type="button" class="btn btn-primary">Buscar Conta</button>
+                    </div>
+                    <div class="col-5 row justify-content-center">
+                        <label id="numeroMesa" class="control-label"></label>
+                        <label id="DataAbertura" class="control-label"></label>
+                        <label id="DataFehamento" class="control-label"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-4">
+                        <label asp-for="total" class="control-label"></label>
+                        <input asp-for="total" class="form-control" readonly />
+                        <input type="hidden"  id="totalReal" class="form-control" readonly />
+                    </div>
+                    <div id="CupomFiscal" class="col-4 row justify-content-center">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="formaPagamento" class="control-label"></label>
+                @Html.DropDownList("SelectFormaPagamento", (SelectList)ViewBag.FormaPagamento, "Selecione...",new { @class = "form-control" })
+                <span asp-validation-for="formaPagamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="valorEntrada" class="control-label"></label>
+                <input asp-for="valorEntrada" class="valor form-control" disabled/>
+                <span asp-validation-for="valorEntrada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="totalTroco" class="control-label"></label>
+                <input asp-for="totalTroco" class="valor form-control" disabled/>
+                <span asp-validation-for="totalTroco" class="text-danger"></span>
+            </div>
+            <div  id="RealizarBaixa" class="form-group">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

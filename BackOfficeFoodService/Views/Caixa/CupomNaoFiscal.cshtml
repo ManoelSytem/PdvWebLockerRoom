@@ -1,0 +1,112 @@
+﻿@model BackOfficeFoodService.Models.CupomNaoFiscalModel
+
+@{
+    ViewData["Title"] = "Cupom não fiscal";
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/css/cpnfiscal.css" />
+    <title>CupomNaoFiscal</title>
+</head>
+<body>
+    <table class="printer-ticket">
+        <thead>
+            <tr>
+                <th class="title" colspan="3">
+                    @Model.cliente.nome
+                    <br />
+                    @Model.cliente.endereco
+                    <br />
+                    @Model.cliente.contato
+                </th>
+            </tr>
+            <tr>
+                <th colspan="3">@DateTime.Now.ToString("dd/MM/yyyy HH:mm ", new CultureInfo("en-US"))</th>
+            </tr>
+            <tr>
+                <th class="ttu" colspan="3">
+                    <b>Cupom não fiscal</b>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="top">
+                <td colspan="3"> </td>
+            </tr>
+            <tr>
+                <td><b>Item</b></td>
+                <td><b>R$ Unit./Qtd</b></td>
+                <td><b>Total</b></td>
+            </tr>
+            @{
+                
+                int codigoProd = 0;
+                foreach(var item in @Model.consumoModel.ToList().OrderBy(n => n.produto.nome)) {
+                 
+                    if (item.produto.codigo != codigoProd) {
+                <tr>
+                    <td>@item.produto.nome</td>
+                    <td>@item.produto.valor / @Model.consumoModel.ToList().OrderBy(n => n.produto.codigo).Where(p => p.produto.codigo == item.produto.codigo).Count()x</td>
+                    <td>@Model.consumoModel.ToList().OrderBy(n => n.produto.nome).Where(p => p.produto.codigo == item.produto.codigo).ToList().Sum(v => v.produto.valor).ToString("C2")</td>
+                </tr>
+                <tr>
+
+                </tr>
+                        codigoProd = item.produto.codigo;
+                    }
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr class="sup ttu p--0">
+                <td colspan="3">
+                    <b>Totais</b>
+                </td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Sub-total</td>
+                <td align="right">@Model.consumoModel.ToList().Sum(c => c.produto.valor).ToString("C2")</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Taxa de serviço</td>
+                <td align="right">R$ 0,00</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Desconto</td>
+                <td align="right">0,00%</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Total</td>
+                <td align="right">@Model.consumoModel.ToList().Sum(c => c.produto.valor).ToString("C2")</td>
+            </tr>
+            <tr class="sup ttu p--0">
+                <td colspan="3">
+                    <b>Formas de Pagamentos</b>
+                </td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Dinheiro, Cartão crédito, Cartão Débito</td>
+                <td align="right">R$ @Model.consumoModel.ToList().Sum(c => c.produto.valor)</td>
+            </tr>
+            <tr class="ttu">
+                <td colspan="2">Troco</td>
+                <td align="right">R$0,00</td>
+            </tr>
+            <tr class="sup">
+                <td colspan="3" align="center">
+                    <b>Pedido: @TempData["SeqAbreMesa"]</b>
+                </td>
+            </tr>
+            <tr class="sup">
+                <td colspan="3" align="center">
+                    SoftwMicro
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

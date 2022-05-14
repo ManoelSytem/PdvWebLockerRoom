@@ -1,0 +1,60 @@
+﻿@model List<BackOfficeFoodService.Models.ConsumoModel>
+
+@{
+    ViewData["Title"] = "MesaConsumo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Mesa @TempData["numeroMesa"] - Consumos</h1>
+<hr />
+<a href="#" onclick="buscaCardapioPrincipal(@TempData["codigo"]);" class="btn btn-success">Adicionar Produtos</a>
+
+<div id="ListMenu" class="col">
+    <hr />
+    <div id="Menu" class="row">
+        @await Html.PartialAsync("../Shared/Spinner.cshtml")
+    </div>
+</div>
+
+<h3>Lista de produtos adicionado a Mesa @TempData["numeroMesa"]</h3>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Preço  R$
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.produto.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.produto.descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.produto.valor)
+            </td>
+            <td>
+                |<a href="#" ; onclick="DeleteProdutoConsumoMesa(@item.codigo,@item.codMesa);"> Excluir</a>
+            </td>
+        </tr>
+            }
+        }
+    </tbody>
+</table>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

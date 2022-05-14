@@ -1,0 +1,50 @@
+﻿@model BackOfficeFoodService.Models.MenuModel
+
+@{
+    ViewData["Title"] = "Menu Lista";
+    Layout = null;
+}
+@await Html.PartialAsync("../Shared/ViewMensagem.cshtml")
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header">Criar Lista de Menu</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <input type="hidden" id="custId" name="custId">
+                                    <input type="hidden" id="codMenuSeq" name="codMenuSeq">
+                                    <label asp-for="titulo" class="control-label"></label>
+                                    <input id="tituloMenu" class="form-control" />
+                                    <span asp-validation-for="titulo" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="descricao" class="control-label"></label>
+                                    <input asp-for="descricao" class="form-control" />
+                                    <span asp-validation-for="descricao" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="SelecaoDeProdutos">Selecione multiplos produtos para o Menu desejado.</label>
+                                    @Html.DropDownList("SelectProduto", (MultiSelectList)ViewBag.ProdutoList, new { @multiple = "multiple", @class = "form-control" })
+                                </div>
+                                <div class="form-group">
+                                    <input id="SalvaMenuLista" type="button" value="Salvar" onclick="SalveMenuListCardapio()" class="btn btn-primary" />
+                                    <input id="AlterarMenuLista" style="display:none;" type="button" value="Alterar" onclick="AlterarMenuListaCardapio()" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ListMenu" class="col">
+            <h4 id="MenuCadapio"></h4>
+            <div id="Menu">
+                @await Html.PartialAsync("../Shared/Spinner.cshtml")
+            </div>
+        </div>
+    

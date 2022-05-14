@@ -1,0 +1,15 @@
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\bin\Release\netcoreapp3.1\Aplication.deps.json
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\bin\Release\netcoreapp3.1\Aplication.dll
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\bin\Release\netcoreapp3.1\Aplication.pdb
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\bin\Release\netcoreapp3.1\Dominio.dll
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\bin\Release\netcoreapp3.1\InfraEstrutura.dll
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\bin\Release\netcoreapp3.1\InfraEstrutura.pdb
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\bin\Release\netcoreapp3.1\Dominio.pdb
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Release\netcoreapp3.1\Aplication.AssemblyInfoInputs.cache
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Release\netcoreapp3.1\Aplication.AssemblyInfo.cs
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Release\netcoreapp3.1\Aplication.csproj.CoreCompileInputs.cache
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Release\netcoreapp3.1\Aplication.csproj.CopyComplete
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Release\netcoreapp3.1\Aplication.dll
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Release\netcoreapp3.1\Aplication.pdb
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Release\netcoreapp3.1\Aplication.csproj.AssemblyReference.cache
+C:\Users\Tees\source\repos\FoodServiceApi\BusinessLogic\obj\Release\netcoreapp3.1\Aplication.GeneratedMSBuildEditorConfig.editorconfig

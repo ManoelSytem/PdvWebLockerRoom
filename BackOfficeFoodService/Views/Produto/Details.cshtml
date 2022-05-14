@@ -1,0 +1,53 @@
+﻿@model BackOfficeFoodService.Models.ProdutoModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+@await Html.PartialAsync("../Shared/ViewMensagem.cshtml")
+<h1>Details</h1>
+<div>
+    <h4>ProdutoModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.codigo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.codigo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.valorDecimal)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.valorDecimal)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.cliente)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.cliente)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

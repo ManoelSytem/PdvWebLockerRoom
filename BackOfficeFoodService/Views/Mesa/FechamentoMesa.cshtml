@@ -1,0 +1,113 @@
+﻿@model List<BackOfficeFoodService.Models.ConsumoModel>
+
+@{
+    ViewData["Title"] = "Fechamento Mesa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Fechamento Mesa @TempData["numeroMesa"] - Consumos</h1>
+<hr />
+@{
+    if (Model.Count > 0)
+    {
+        <div class="alert alert-warning" role="alert">
+            <p>
+                Atenção! Realize a revisão do item produto adicionado a mesa. Após isso realize a confirmação.
+                Após a confirmação será gerado um CUPOM NÃO FISCAL de saída. Relize a baixa no caixa após o pagamento do cliente. Caixa>Contas a Receber.
+            </p>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+            <p>
+                Atenção! Verifique se Status da mesa @TempData["numeroMesa"] se encontra fechada em: Mesa>Gerenciar Mesa. <br />
+                Se a mesa se encontra aberta verifque se existe produto adicionado a Mesa  @TempData["numeroMesa"]  em: Mesa>Gerenciar Mesa>Adicionar Consumo.
+            </p>
+        </div>
+    }
+}
+
+<hr />
+<h3>Lista de produtos adicionado a Mesa @TempData["numeroMesa"]</h3>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Preço  R$
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.produto.nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.produto.descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.produto.valor)
+                    </td>
+                    <td>
+                        |<a href="#" ; onclick="DeleteProdutoConsumoMesa(@item.codigo,@item.codMesa);"> Excluir</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                <div class="row justify-content-end">
+                    <div class="col-4">
+                        <h3 class="text-right">Total : </h3>
+                    </div>
+                    <div class="col-4">
+                        <h5>
+                            @{
+                                decimal total = 0;
+                                @foreach (var item in Model)
+                                {
+                                    total += item.produto.valor;
+                                }
+
+                            }
+                          @total.ToString("C2") 
+                        </h5>
+                    </div>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@{
+    if (Model.Count > 0)
+    {
+        <div class="row">
+            <div class="col align-self-center">
+                <button onclick="FechamentoMesa(@TempData["codigo"],@TempData["seqAbreMesa"],@TempData["numeroMesa"],'@total')" type="button" class="btn btn-primary">Confirmar fechamento</button>
+            </div>
+        </div>
+    }
+
+}
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
