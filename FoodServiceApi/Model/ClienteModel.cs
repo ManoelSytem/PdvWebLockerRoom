@@ -8,6 +8,7 @@ namespace FoodServiceApi.Model
 {
     public class ClienteModel
     {
+        public int IdUser { get; set; }
         public string nome { get; set; }
         public string descricao { get; set; }
         public string endereco { get; set; }

@@ -13,6 +13,12 @@ namespace BackOfficeFoodService.Servico
         Task<ActionResultado> Post(ClienteModel clienteModel);
         [Get("/Cliente/ObterClientePorEmail")]
         Task<ClienteModel> ObterClientePorEmail(string email);
-
+        [Get("/Cliente/ObterListaDeCliente")]
+        Task<List<ClienteModel>> ObterListaDeCliente();
+        [Get("/Cliente/ObterClientePorIdUser")]
+        Task<ClienteModel> ObterClientePorIdUser(int IdUser);
+        [Put("/Cliente/PutCliente")]
+        Task<ActionResultado> AtualizarCliente(ClienteModel clienteModel);
+    
     }
 }

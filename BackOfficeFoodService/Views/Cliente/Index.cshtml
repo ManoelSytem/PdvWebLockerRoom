@@ -1,0 +1,51 @@
+﻿@model List<BackOfficeFoodService.Models.ClienteModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@await Html.PartialAsync("../Shared/ViewMensagem.cshtml")
+<p>
+    <a asp-action="Create">Cadastrar novo cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+              Endereço
+            </th>
+            <th>
+               Contato
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+         @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.endereco)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.contato)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { IdUser = item.IdUser }) |
+                       @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                        @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>

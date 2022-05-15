@@ -17,9 +17,9 @@ namespace BusinessLogic.Servico
             _uow = uow;
         }
 
-        public IEnumerable<Cliente> Listar()
+        public List<Cliente> Listar()
         {
-            return _uow.ClienteRepository.Get();
+            return _uow.ClienteRepository.Get().ToList();
         }
         public void Adicionar(Cliente cli)
         {
@@ -45,6 +45,10 @@ namespace BusinessLogic.Servico
         public Cliente ObterClientePorEmail(string email)
         {
            return _uow.ClienteRepository.Get().Where(c => c.email == email).First();
+        }
+        public Cliente ObterClientePorIdUser(int IdUser)
+        {
+            return _uow.ClienteRepository.Get().Where(c => c.IdUser == IdUser).First();
         }
     }
 }

@@ -8,6 +8,7 @@ namespace BackOfficeFoodService.Models
 {
     public class ClienteModel
     {
+        public int IdUser { get; set; }
         [Required(ErrorMessage = "Informe o nome do cliente.")]
         [StringLength(100, ErrorMessage = "O nome não deve exceder {1} caractere.")]
         [Display(Name = "Nome")]

@@ -13,9 +13,24 @@ namespace BackOfficeFoodService.Controllers
     public class ClienteController : ControllerBase
     {
         // GET: ClienteController
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            try
+            {
+                if (AutenticanteVerifiy())
+                {
+                    var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                    var ICliente = RestService.For<IClienteServico>(Servico.Servico.UrlBaseFoodService());
+                    var result = await ICliente.ObterListaDeCliente();
+                    return View(result);
+                }
+                else { return RedirectToAction("index", "login"); }
+            }
+            catch (Exception ex)
+            {
+                SetFlash(Enum.FlashMessageType.Error, ex.Message);
+                return View();
+            }
         }
 
         // GET: ClienteController/Details/5
@@ -58,22 +73,57 @@ namespace BackOfficeFoodService.Controllers
         }
 
         // GET: ClienteController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public async Task<ActionResult> Edit(int IdUser)
         {
-            return View();
+            try
+            {
+                if (AutenticanteVerifiy())
+                {
+                    var email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                    var ICliente = RestService.For<IClienteServico>(Servico.Servico.UrlBaseFoodService());
+                    var result = await ICliente.ObterClientePorIdUser(IdUser);
+                    return View(result);
+                }
+                else { return RedirectToAction("index", "login"); }
+            }
+            catch (Exception ex)
+            {
+                SetFlash(Enum.FlashMessageType.Error, ex.Message);
+                return View();
+            }
         }
 
         // POST: ClienteController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, IFormCollection collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    if (AutenticanteVerifiy())
+                    {
+                        ClienteModel clienteModel = new ClienteModel();
+                        clienteModel.IdUser = Convert.ToInt32(collection["IdUser"]);
+                        clienteModel.nome = collection["nome"];
+                        clienteModel.endereco = collection["endereco"];
+                        clienteModel.contato = collection["contato"];
+                        clienteModel.email = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                       
+                        var ICliente = RestService.For<IClienteServico>(Servico.Servico.UrlBaseFoodService());
+                        var result = await ICliente.AtualizarCliente(clienteModel);
+                       
+                        SetFlash(Enum.FlashMessageType.Success, result.Message);
+                        return View();
+                    }
+                }
+                return View();
             }
-            catch
+            catch (Exception ex)
             {
+                SetFlash(Enum.FlashMessageType.Error, ex.Message);
                 return View();
             }
         }

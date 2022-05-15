@@ -853,3 +853,5 @@ E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFood
 E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.dll
 E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.pdb
 E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.genruntimeconfig.cache
+E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\Index.cshtml.g.cs
+E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\Edit.cshtml.g.cs

@@ -27,10 +27,13 @@ namespace FoodServiceApi.Controllers
             _ClienteService = _clienteService;
         }
         // GET: api/<ClienteController>
+        [Route("ObterListaDeCliente")]
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<ClienteModel> ObterListaDeCliente()
         {
-            return new string[] { "value1", "value2" };
+            var listaClientes = _ClienteService.Listar();
+            var listaClientesModel = _JsonAutoMapper.ConvertAutoMapperListJson<ClienteModel>(listaClientes);
+            return listaClientesModel;
         }
 
         // GET api/<ClienteController>/5
@@ -69,11 +72,31 @@ namespace FoodServiceApi.Controllers
                 return ClienteModel;
         }
 
-
-        // PUT api/<ClienteController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [Route("ObterClientePorIdUser")]
+        [HttpGet]
+        public ClienteModel ObterClientePorIdUser(int IdUser)
         {
+            var cliente = _ClienteService.ObterClientePorIdUser(IdUser);
+            var ClienteModel = _JsonAutoMapper.ConvertAutoMapperJson<ClienteModel>(cliente);
+            return ClienteModel;
+        }
+
+        [Route("PutCliente")]
+        [HttpPut]
+        public ActionResultado Put(ClienteModel clienteModel)
+        {
+            try
+            {
+                Cliente cliente = _JsonAutoMapper.ConvertAutoMapperJson<Cliente>(clienteModel);
+                _ClienteService.Alterar(cliente);
+                return _JsonAutoMapper.Resposta("Cliente alterado com sucesso!");
+            }
+            catch (Exception e)
+            {
+                return _JsonAutoMapper.Resposta("Falha!", e);
+            }
+
+            return _JsonAutoMapper.Resposta("Contatar Administrador!");
         }
 
         // DELETE api/<ClienteController>/5
