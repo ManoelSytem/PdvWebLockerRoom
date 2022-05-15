@@ -16,11 +16,12 @@ namespace Aplication.Repository
     {
         RepositoryGeneric<Mesa> _repositoryGeneric;
         AplicationDbContext _context;
-        public MesaRepository()
+        public MesaRepository(AplicationDbContext context)
         {
-            _context = new AplicationDbContext();
+            _context = context;
             _repositoryGeneric = new RepositoryGeneric<Mesa>(_context);
         }
+
 
         public void Add(Mesa mesa)
         {

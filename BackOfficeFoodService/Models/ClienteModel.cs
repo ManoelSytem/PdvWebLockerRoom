@@ -8,14 +8,10 @@ namespace BackOfficeFoodService.Models
 {
     public class ClienteModel
     {
-        [Required(ErrorMessage = "Informe o nome do estabelecimento.")]
+        [Required(ErrorMessage = "Informe o nome do cliente.")]
         [StringLength(100, ErrorMessage = "O nome não deve exceder {1} caractere.")]
-        [Display(Name = "Nome do Food Service")]
+        [Display(Name = "Nome")]
         public string nome { get; set; }
-        [Required(ErrorMessage = "Informe a descrição.")]
-        [StringLength(250, ErrorMessage = "A descrição não deve exceder {1} caractere.")]
-        [Display(Name = "Descrição")]
-        public string descricao { get; set; }
         [Required(ErrorMessage = "Informe o endereço.")]
         [StringLength(100, ErrorMessage = "A endereço não deve exceder {1} caractere.")]
         [Display(Name = "Endereço")]
@@ -24,9 +20,6 @@ namespace BackOfficeFoodService.Models
         [StringLength(11, ErrorMessage = "O contato dever possuir {1} dígitos.")]
         [Display(Name = "Contato")]
         public string contato { get; set; }
-        [EmailAddress(ErrorMessage = "O endereço de email não é valido.")]
-        [Required(ErrorMessage = "Informe o endereço de email.")]
-        [Display(Name = "Endereço de email.")]
         public string email { get; set; }
     }
 }

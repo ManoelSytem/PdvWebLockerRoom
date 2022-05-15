@@ -8,9 +8,10 @@ namespace Aplication.Negocio
 {
     public class ProdutoNegocio
     {
-        public ProdutoNegocio()
+        private readonly ProdutoService _ProdutoService;
+        public ProdutoNegocio(ProdutoService produtoService)
         {
-
+            _ProdutoService = produtoService;
         }
 
         public void VerificaListaDeProdutoExiste(List<int> listProduto)
@@ -18,11 +19,10 @@ namespace Aplication.Negocio
             int codProduto = 0;
             try
             {
-                ProdutoService produtodoService = new ProdutoService();
                 foreach (int codProd in listProduto)
                 {
                     codProduto = codProd;
-                    produtodoService.ObterProdutoPorId(codProd);
+                    _ProdutoService.ObterProdutoPorId(codProd);
                 }
 
             }

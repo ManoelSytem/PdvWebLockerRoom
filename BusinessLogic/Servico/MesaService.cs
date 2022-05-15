@@ -13,11 +13,6 @@ namespace Aplication.Servico
         {
             _uow = uow;
         }
-
-        public MesaService()
-        {
-            _uow = new UnitOfWork();
-        }
         public void Adicionar(Mesa mesa)
         {
             _uow.MesaRepository.Add(mesa);

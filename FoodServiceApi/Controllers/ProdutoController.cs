@@ -23,13 +23,14 @@ namespace FoodServiceApi.Controllers
         private readonly ProdutoService _ProdutoService;
         private readonly ProdutoItemRepository _ProdutoItemRepository;
         private readonly ProdutoRepository _ProdutoRepository;
-
-        public ProdutoController(IJsonAutoMapper JsonAutoMapper)
+       
+        public ProdutoController(IJsonAutoMapper JsonAutoMapper, ProdutoRepository _produtoRepository
+            , ProdutoItemRepository _produtoItemRepository, ProdutoService _produtoService)
         {
             _JsonAutoMapper = JsonAutoMapper;
-            _ProdutoService = new ProdutoService();
-            _ProdutoItemRepository = new ProdutoItemRepository();
-            _ProdutoRepository = new ProdutoRepository();
+            _ProdutoService = _produtoService;
+            _ProdutoItemRepository = _produtoItemRepository;
+            _ProdutoRepository = _produtoRepository;
         }
         // GET: api/<ProdutoController>
         [HttpGet]
@@ -66,7 +67,7 @@ namespace FoodServiceApi.Controllers
         {
             try
             {
-                ProdutoNegocio produtoNegocio = new ProdutoNegocio();
+                ProdutoNegocio produtoNegocio = new ProdutoNegocio(_ProdutoService);
                 var listaItemProduto = _ProdutoItemRepository.ObterProdutoClienteAssociadoCardapio(id, cliente);
                 var result = produtoNegocio.VerificaSeProdutoExisteMenu(listaItemProduto);
                 return _JsonAutoMapper.Resposta(result);
@@ -86,7 +87,7 @@ namespace FoodServiceApi.Controllers
         {
             try
             {
-                ProdutoNegocio produtoNegocio = new ProdutoNegocio();
+                ProdutoNegocio produtoNegocio = new ProdutoNegocio(_ProdutoService);
                 var listaItemProduto = _ProdutoItemRepository.ObterProdutoClienteAssociadoCardapio(id, cliente);
                 _ProdutoRepository.DeleteProdutoPorCliente(id, cliente);
                 var listaMenuItemProduto = _ProdutoItemRepository.ObterProdutoClienteAssociadoCardapio(id, cliente);

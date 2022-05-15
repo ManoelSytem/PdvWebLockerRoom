@@ -17,3 +17,13 @@ C:\Users\Tees\source\repos\FoodServiceApi\Dominio\obj\Debug\netcoreapp3.1\Domini
 C:\Users\Tees\source\repos\FoodServiceApi\Dominio\obj\Debug\netcoreapp3.1\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\Tees\source\repos\FoodServiceApi\Dominio\obj\Debug\netcoreapp3.1\Dominio.dll
 C:\Users\Tees\source\repos\FoodServiceApi\Dominio\obj\Debug\netcoreapp3.1\Dominio.pdb
+E:\PdvWebLockerRoom\Dominio\bin\Debug\netcoreapp3.1\Dominio.deps.json
+E:\PdvWebLockerRoom\Dominio\bin\Debug\netcoreapp3.1\Dominio.dll
+E:\PdvWebLockerRoom\Dominio\bin\Debug\netcoreapp3.1\Dominio.pdb
+E:\PdvWebLockerRoom\Dominio\obj\Debug\netcoreapp3.1\Dominio.csproj.AssemblyReference.cache
+E:\PdvWebLockerRoom\Dominio\obj\Debug\netcoreapp3.1\Dominio.GeneratedMSBuildEditorConfig.editorconfig
+E:\PdvWebLockerRoom\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfoInputs.cache
+E:\PdvWebLockerRoom\Dominio\obj\Debug\netcoreapp3.1\Dominio.AssemblyInfo.cs
+E:\PdvWebLockerRoom\Dominio\obj\Debug\netcoreapp3.1\Dominio.csproj.CoreCompileInputs.cache
+E:\PdvWebLockerRoom\Dominio\obj\Debug\netcoreapp3.1\Dominio.dll
+E:\PdvWebLockerRoom\Dominio\obj\Debug\netcoreapp3.1\Dominio.pdb

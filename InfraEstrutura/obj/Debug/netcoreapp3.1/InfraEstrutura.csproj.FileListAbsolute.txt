@@ -23,3 +23,16 @@ C:\Users\Tees\source\repos\FoodServiceApi\InfraEstrutura\obj\Debug\netcoreapp3.1
 C:\Users\Tees\source\repos\FoodServiceApi\InfraEstrutura\obj\Debug\netcoreapp3.1\InfraEstrutura.csproj.CopyComplete
 C:\Users\Tees\source\repos\FoodServiceApi\InfraEstrutura\obj\Debug\netcoreapp3.1\InfraEstrutura.dll
 C:\Users\Tees\source\repos\FoodServiceApi\InfraEstrutura\obj\Debug\netcoreapp3.1\InfraEstrutura.pdb
+E:\PdvWebLockerRoom\InfraEstrutura\bin\Debug\netcoreapp3.1\InfraEstrutura.deps.json
+E:\PdvWebLockerRoom\InfraEstrutura\bin\Debug\netcoreapp3.1\InfraEstrutura.dll
+E:\PdvWebLockerRoom\InfraEstrutura\bin\Debug\netcoreapp3.1\InfraEstrutura.pdb
+E:\PdvWebLockerRoom\InfraEstrutura\bin\Debug\netcoreapp3.1\Dominio.dll
+E:\PdvWebLockerRoom\InfraEstrutura\bin\Debug\netcoreapp3.1\Dominio.pdb
+E:\PdvWebLockerRoom\InfraEstrutura\obj\Debug\netcoreapp3.1\InfraEstrutura.csproj.AssemblyReference.cache
+E:\PdvWebLockerRoom\InfraEstrutura\obj\Debug\netcoreapp3.1\InfraEstrutura.GeneratedMSBuildEditorConfig.editorconfig
+E:\PdvWebLockerRoom\InfraEstrutura\obj\Debug\netcoreapp3.1\InfraEstrutura.AssemblyInfoInputs.cache
+E:\PdvWebLockerRoom\InfraEstrutura\obj\Debug\netcoreapp3.1\InfraEstrutura.AssemblyInfo.cs
+E:\PdvWebLockerRoom\InfraEstrutura\obj\Debug\netcoreapp3.1\InfraEstrutura.csproj.CoreCompileInputs.cache
+E:\PdvWebLockerRoom\InfraEstrutura\obj\Debug\netcoreapp3.1\InfraEstrutura.csproj.CopyComplete
+E:\PdvWebLockerRoom\InfraEstrutura\obj\Debug\netcoreapp3.1\InfraEstrutura.dll
+E:\PdvWebLockerRoom\InfraEstrutura\obj\Debug\netcoreapp3.1\InfraEstrutura.pdb

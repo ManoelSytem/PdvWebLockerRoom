@@ -18,11 +18,7 @@ namespace Aplication.Servico
         {
             _uow = uow;
         }
-
-        public CardapioService()
-        {
-            _uow  = new UnitOfWork();
-        }
+       
         public IEnumerable<Cardapio> Listar()
         {
             return _uow.CardapioRepository.Get();

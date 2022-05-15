@@ -10,12 +10,14 @@ using Aplication.Servico;
 using Aplication.Util;
 using BusinessLogic.Servico;
 using Dominio;
+using InfraEstrutura;
 using InfraEstrutura.Interface;
 using InfraEstrutura.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -43,13 +45,25 @@ namespace FoodServiceApi
                     builder => builder.AllowAnyOrigin().AllowAnyHeader());
             });
             services.AddControllers();
+
+            services.AddDbContext<AplicationDbContext>(
+              options => options.UseMySql("server=localhost;user id=root;Password=Si@010101;database=FoodService; Allow User Variables=True"));
+
             services.AddControllers().AddNewtonsoftJson();
-            services.AddSingleton<IJsonAutoMapper, JsonAutoMapperGeneric>();
-            services.AddSingleton<IJsonAutoMapper, JsonAutoMapperGeneric>();
-            services.AddSingleton<IMesaNegocio, MesaNegocio>();
-            services.AddTransient<IConsumoRepository, ConsumoRepository>();
-            services.AddSingleton<IClienteService, ClienteService>();
-            services.AddSingleton<IContaRepository, ContaRepository>();
+            services.AddScoped<UnitOfWork, UnitOfWork>();
+            services.AddScoped<IJsonAutoMapper, JsonAutoMapperGeneric>();
+            services.AddScoped<IJsonAutoMapper, JsonAutoMapperGeneric>();
+            services.AddScoped<IMesaNegocio, MesaNegocio>();
+            services.AddScoped<IConsumoRepository, ConsumoRepository>();
+            services.AddScoped<IClienteService, ClienteService>();
+            services.AddScoped<IContaRepository, ContaRepository>();
+            services.AddScoped<MesaRepository, MesaRepository>();
+            services.AddScoped<ProdutoRepository, ProdutoRepository>();
+            services.AddScoped<ProdutoItemRepository, ProdutoItemRepository>();
+            services.AddScoped<CardapioService, CardapioService>();
+            services.AddScoped<ProdutoService, ProdutoService>();
+
+
 
         }
 

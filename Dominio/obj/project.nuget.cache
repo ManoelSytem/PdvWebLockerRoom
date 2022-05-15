@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xlyCvY9f5xq0hSbzArn1xUCQMU0K+kzY3Egw+IIUC1RxBKW55iSMlIOYWbntio+re/AK3Q9r2sTa3gK955nOfA==",
+  "dgSpecHash": "tGvnP7CbETV2JYjiCyXgOWCvYhUhjly1ayPrj20EzjOez+kHX8gkoOtT79kJuxBHa9QrV24Ubv7q2f5AgtptvA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\Dominio\\Dominio.csproj",
+  "projectFilePath": "E:\\PdvWebLockerRoom\\Dominio\\Dominio.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

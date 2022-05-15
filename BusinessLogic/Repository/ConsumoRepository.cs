@@ -15,9 +15,9 @@ namespace Aplication.Repository
     {
         RepositoryGeneric<Consumo> _repositoryGeneric;
         AplicationDbContext _context;
-        public ConsumoRepository()
+        public ConsumoRepository(AplicationDbContext context)
         {
-            _context = new AplicationDbContext();
+            _context = context;
             _repositoryGeneric = new RepositoryGeneric<Consumo>(_context);
         }
 

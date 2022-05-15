@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ErUoyADoars0ODfbvMV/4dXLlaaVvAwRecmxIky4FmesnyiITA6+FhiewNd9jmK+nLN+OeMVlwXNTPP6SYFsEA==",
+  "dgSpecHash": "PQwTmU196xSS+sQY9z5sR0Kl+oFqRflKsrfgGsRZncLhSDJJ/SNqu4XMI6O9PVC56wGcHOdbdF+WvFUmpwO5mg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tees\\source\\repos\\FoodServiceApi\\InfraEstrutura\\InfraEstrutura.csproj",
+  "projectFilePath": "E:\\PdvWebLockerRoom\\InfraEstrutura\\InfraEstrutura.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tees\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\Tees\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

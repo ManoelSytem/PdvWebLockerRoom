@@ -14,11 +14,6 @@ namespace Aplication.Servico
         {
             _uow = uow;
         }
-
-        public ProdutoService()
-        {
-            _uow = new UnitOfWork();
-        }
         public void Adicionar(Produto prod)
         {
             _uow.ProdutoRepository.Add(prod);

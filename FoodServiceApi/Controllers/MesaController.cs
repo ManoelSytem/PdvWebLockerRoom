@@ -19,22 +19,24 @@ namespace FoodServiceApi.Controllers
     [ApiController]
     public class MesaController : ControllerBase
     {
-        private  MesaRepository _MesaRepository;
+        
         private readonly IJsonAutoMapper _JsonAutoMapper;
         private readonly IMesaNegocio _IMesaNegocio;
         private readonly IConsumoRepository _ConsumoRepository;
         private readonly ProdutoRepository _ProdutoRepository;
         public readonly IContaRepository _ContaRepository;
+        private readonly MesaRepository _MesaRepository;
 
         public MesaController(IJsonAutoMapper jsonAutoMapper, IMesaNegocio _imesaNegocio, 
-            IConsumoRepository IConsumoRepository, IContaRepository _contaRepository)
+            IConsumoRepository IConsumoRepository, IContaRepository _contaRepository,
+            MesaRepository mesaRepository, ProdutoRepository _produtoRepository)
         {
             _JsonAutoMapper = jsonAutoMapper;
-            _MesaRepository = new MesaRepository();
+            _MesaRepository = mesaRepository;
             _ConsumoRepository = IConsumoRepository;
             _IMesaNegocio = _imesaNegocio;
             _ContaRepository = _contaRepository;
-            _ProdutoRepository = new ProdutoRepository();
+            _ProdutoRepository = _produtoRepository;
         }
 
         [Route("Create")]

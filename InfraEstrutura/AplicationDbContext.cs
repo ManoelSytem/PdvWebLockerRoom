@@ -7,13 +7,11 @@ namespace InfraEstrutura
 {
     public class AplicationDbContext : DbContext
     {
-        protected  override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public AplicationDbContext(DbContextOptions<AplicationDbContext> options)
+        : base(options)
         {
-
-            var connectionString = "server=localhost;user id=root;Password=Si@010101;database=FoodService; Allow User Variables=True";
-            //var connectionString = "server=remotemysql.com;user id=VSCsQU417i;Password=Op0Ec2idjF;database=VSCsQU417i; Allow User Variables=True";
-            optionsBuilder.UseMySql(connectionString);
         }
+
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Cardapio> Cardapio { get; set; }
         public DbSet<ListaItemProduto> ListaItemProduto { get; set; }

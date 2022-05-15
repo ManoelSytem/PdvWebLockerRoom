@@ -52,7 +52,7 @@ namespace FoodServiceApi.Controllers
                 Cliente.dataUpdate = DateTime.Now;
                 Cliente.status = Status.Ativado.ToDescriptionString();
                 _ClienteService.Adicionar(Cliente);
-                return _JsonAutoMapper.Resposta("Dados atualizado com sucesso");
+                return _JsonAutoMapper.Resposta("Cliente cadastrado com sucesso");
             }
             catch (Exception e)
             {

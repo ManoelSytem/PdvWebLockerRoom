@@ -25,12 +25,15 @@ namespace FoodServiceApi.Controllers
         private readonly IJsonAutoMapper _JsonAutoMapper;
         private readonly CardapioService _CardapioService;
         private readonly ProdutoItemRepository _ProdutoItemRepository;
+        private readonly ProdutoService _ProdutoService;
 
-        public CardapioController(IJsonAutoMapper JsonAutoMapper)
+        public CardapioController(IJsonAutoMapper JsonAutoMapper, ProdutoItemRepository _produtoItemRepository,
+           CardapioService cardapioService, ProdutoService ProdutoService)
         {
             _JsonAutoMapper = JsonAutoMapper;
-            _CardapioService = new CardapioService();
-            _ProdutoItemRepository = new ProdutoItemRepository();
+            _CardapioService = cardapioService;
+            _ProdutoItemRepository = _produtoItemRepository;
+            _ProdutoService = ProdutoService;
         }
         // GET: api/<CardapioController>
         [HttpGet]
@@ -84,8 +87,8 @@ namespace FoodServiceApi.Controllers
         {
             try
             {
-                ProdutoNegocio produtoNegocio = new ProdutoNegocio();
-                CardapoNegocio cardapioNegocio = new CardapoNegocio();
+                ProdutoNegocio produtoNegocio = new ProdutoNegocio(_ProdutoService);
+                CardapoNegocio cardapioNegocio = new CardapoNegocio(_CardapioService);
 
                 produtoNegocio.VerificaListaDeProdutoExiste(cardapioMenu.ListCodProduto);
 
@@ -133,8 +136,8 @@ namespace FoodServiceApi.Controllers
         {
             try
             {
-                ProdutoNegocio produtoNegocio = new ProdutoNegocio();
-                CardapoNegocio cardapioNegocio = new CardapoNegocio();
+                ProdutoNegocio produtoNegocio = new ProdutoNegocio(_ProdutoService);
+                CardapoNegocio cardapioNegocio = new CardapoNegocio(_CardapioService);
 
                 produtoNegocio.VerificaListaDeProdutoExiste(cardapioMenu.ListCodProduto);
                 _ProdutoItemRepository.Delete(cardapioMenu.codMenuSeq);

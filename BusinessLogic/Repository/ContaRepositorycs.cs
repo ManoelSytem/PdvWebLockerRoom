@@ -16,9 +16,9 @@ namespace Aplication.Repository
     { 
         RepositoryGeneric<Conta> _repositoryGeneric;
         AplicationDbContext _context;
-        public ContaRepository()
+        public ContaRepository(AplicationDbContext context)
         {
-            _context = new AplicationDbContext();
+            _context = context;
             _repositoryGeneric = new RepositoryGeneric<Conta>(_context);
         }
 

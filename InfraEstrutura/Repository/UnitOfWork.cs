@@ -21,10 +21,7 @@ namespace InfraEstrutura.Repository
         {
             _context = context;
         }
-        public UnitOfWork()
-        {
-            _context = new AplicationDbContext();
-        }
+     
         public IRepository<Cardapio> CardapioRepository
         {
             get

@@ -11,10 +11,10 @@ namespace BusinessLogic.Servico
 {
     public class ClienteService : IClienteService,  IDisposable
     {
-        UnitOfWork _uow;
-        public ClienteService()
+        private readonly UnitOfWork _uow;
+        public ClienteService(UnitOfWork uow)
         {
-            _uow = new UnitOfWork();
+            _uow = uow;
         }
 
         public IEnumerable<Cliente> Listar()

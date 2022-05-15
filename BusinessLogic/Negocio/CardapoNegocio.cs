@@ -8,9 +8,10 @@ namespace Aplication.Negocio
 {
     public class CardapoNegocio
     {
-        public CardapoNegocio()
+        private readonly CardapioService _CardapioService;
+        public CardapoNegocio(CardapioService _cardapioService)
         {
-                
+            _CardapioService = _cardapioService;
         }
 
         public List<ListaItemProduto> MontarListaMenuCardapio(int idCardapio, string titulo, string descricao, List<int> listCodProduto)
@@ -36,10 +37,9 @@ namespace Aplication.Negocio
         {
             try
             {
-                CardapioService cardapioService = new CardapioService();
                 foreach (ListaItemProduto menu in ListaMenu)
                 {
-                    var itemMenu = cardapioService.ObterItemMenu(menu.codProduto, menu.codigoCardapio);
+                    var itemMenu = _CardapioService.ObterItemMenu(menu.codProduto, menu.codigoCardapio);
                     if(itemMenu != null)
                     {
                         throw new NotImplementedException("O Produto de código "+itemMenu.codProduto+", já foi adicionando no menu "+itemMenu.titulo+", favor verificar.");

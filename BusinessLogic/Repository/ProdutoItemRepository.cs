@@ -14,9 +14,9 @@ namespace Aplication.Repository
     public class ProdutoItemRepository : IRepository<ListaItemProduto>
     {
         AplicationDbContext _context;
-        public ProdutoItemRepository()
+        public ProdutoItemRepository(AplicationDbContext context)
         {
-            _context = new AplicationDbContext();
+            _context = context;
         }
         public void Add(ListaItemProduto entity)
         {
