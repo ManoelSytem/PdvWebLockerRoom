@@ -54,7 +54,7 @@ namespace BackOfficeFoodService.Controllers
             }
         }
 
-        public async Task<ActionResult> MenuListCardapio(int idCardapio)
+        public async Task<ActionResult> Categoria(int idCardapio)
         {
             try
             {
@@ -94,7 +94,7 @@ namespace BackOfficeFoodService.Controllers
 
 
         [HttpPost]
-        public async Task<ResultApi> MenuListCardapio(int idCardapio, string titulo, string descricao, string[] produtos)
+        public async Task<ResultApi> Categoria(int idCardapio, string titulo, string descricao, string[] produtos)
         {
             try
             {

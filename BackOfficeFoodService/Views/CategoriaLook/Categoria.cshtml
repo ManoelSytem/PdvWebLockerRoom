@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <h5 class="card-header">Criar Lista de Menu</h5>
+                <h5 class="card-header">Categoria Produto</h5>
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
@@ -28,11 +28,11 @@
                                     <span asp-validation-for="descricao" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="SelecaoDeProdutos">Selecione multiplos produtos para o Menu desejado.</label>
+                                    <label for="SelecaoDeProdutos">Selecione multiplos produtos para o seu look estoque desejado.</label>
                                     @Html.DropDownList("SelectProduto", (MultiSelectList)ViewBag.ProdutoList, new { @multiple = "multiple", @class = "form-control" })
                                 </div>
                                 <div class="form-group">
-                                    <input id="SalvaMenuLista" type="button" value="Salvar" onclick="SalveMenuListCardapio()" class="btn btn-primary" />
+                                    <input id="SalvaMenuLista" type="button" value="Salvar" onclick="SalveCategoria()" class="btn btn-primary" />
                                     <input id="AlterarMenuLista" style="display:none;" type="button" value="Alterar" onclick="AlterarMenuListaCardapio()" class="btn btn-primary" />
                                 </div>
                             </form>

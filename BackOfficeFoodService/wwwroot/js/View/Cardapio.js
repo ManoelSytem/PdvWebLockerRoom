@@ -8,7 +8,7 @@ function CreateListCardapio(idcardapio, tituloCardapio) {
     TituloGlobalSalvar = tituloCardapio;
 
     $.ajax({
-        url: "/Cardapio/MenuListCardapio",
+        url: "/CategoriaLook/Categoria",
         type: 'get',
         cache: false,
         async: true,
@@ -25,7 +25,7 @@ function CreateListCardapio(idcardapio, tituloCardapio) {
 }
 
 
-function SalveMenuListCardapio() {
+function SalveCategoria() {
     $("#overlay").fadeIn();
     $("#SalvaMenuLista").attr("disabled", true);
     $("#wait").css("display", "block");
@@ -35,7 +35,7 @@ function SalveMenuListCardapio() {
     var SelectProdutos = $('#SelectProduto').val();
 
     $.ajax({
-        url: "/Cardapio/MenuListCardapio",
+        url: "/CategoriaLook/Categoria",
         type: 'post',
         data: { idCardapio: idcardapio, titulo: titulo, descricao: descricao, produtos: SelectProdutos },
         cache: false,
@@ -60,7 +60,7 @@ function buscaListaCardapio(idcardapio, tituloCardapio) {
     $("#overlay").fadeIn();
         $("#wait").css("display", "block");
     $.ajax({
-        url: "/Cardapio/BuscarMenuListaCardapio",
+        url: "/CategoriaLook/BuscarMenuListaCardapio",
         type: 'get',
         data: { idCardapio: idcardapio },
         cache: false,
@@ -68,7 +68,7 @@ function buscaListaCardapio(idcardapio, tituloCardapio) {
     }).done(function (data) {
         var ListaMenuHtml = ObjetoHtmlMenuList(data);
         $("#Menu").html(ListaMenuHtml);
-        $("#MenuCadapio").text("Cardápio Selecionado : " + TituloGlobalSalvar);
+        $("#MenuCadapio").text("Estoque -  " + TituloGlobalSalvar);
         $("#wait").css("display", "none");
         $("#overlay").fadeOut();
     }).fail(function (data) {
@@ -84,7 +84,7 @@ function ExcluirMenuLista(codMenuSeq) {
     $("#overlay").fadeIn();
     var idcardapio = $("#custId").val();
     $.ajax({
-        url: "/Cardapio/DeleteMenuListaCardapio",
+        url: "/CategoriaLook/DeleteMenuListaCardapio",
         type: 'delete',
         data: { codMenuSeq: codMenuSeq },
         cache: false,
@@ -112,7 +112,7 @@ function AlterarMenuListaCardapio() {
     var SelectProdutos = $('#SelectProduto').val();
 
     $.ajax({
-        url: "/Cardapio/AlterarMenuListaCardapio",
+        url: "/CategoriaLook/AlterarMenuListaCardapio",
         type: 'Post',
         data: { idCardapio: idcardapio, titulo: titulo, descricao: descricao, produtos: SelectProdutos, codMenuSeq: $('#codMenuSeq').val()},
         cache: false,
@@ -140,7 +140,7 @@ function PreencherDadosFormularioAlteracao(codMenu) {
     var ArrayIdProdutos = [];
 
     $.ajax({
-        url: "/Cardapio/BuscarMenuListaCardapio",
+        url: "/CategoriaLook/BuscarMenuListaCardapio",
         type: 'get',
         data: { idCardapio: idcardapio },
         cache: false,
@@ -233,7 +233,7 @@ function ExcluirCardapio(codCardapio, nomeCardapio) {
         btn.addEventListener('click', function (evt) {
             $("#ButtonConfirm").css("display", "none");
             $.ajax({
-                url: "/Cardapio/DeleteCardapio",
+                url: "/CategoriaLook/DeleteCardapio",
                 type: 'delete',
                 data: { id: codCardapio },
                 cache: false,
@@ -263,7 +263,7 @@ function AtualizarCardapio() {
     var idCardapio = $('#idCardapio').val();
 
             $.ajax({
-                url: "/Cardapio/AtualizaCardapio",
+                url: "/CategoriaLook/AtualizaCardapio",
                 type: 'Put',
                 data: { id: idCardapio, titulo: titulo },
                 cache: false,
@@ -288,7 +288,7 @@ function AtualizarCardapio() {
 function BuscarCardapio(idCardapio) {
 
     $.ajax({
-        url: "/Cardapio/ObterCardapio",
+        url: "/CategoriaLook/ObterCardapio",
         type: 'Get',
         data: { id: idCardapio},
         cache: false,
@@ -326,7 +326,7 @@ function DefinirCardapioPrincipal(codCardapio) {
     $("#overlay").fadeIn();
    
     $.ajax({
-        url: "/Cardapio/DefinirCardapioPrincipal",
+        url: "/CategoriaLook/DefinirCardapioPrincipal",
         type: 'Post',
         data: { codCardapio: codCardapio },
         cache: false,

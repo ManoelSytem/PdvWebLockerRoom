@@ -73,7 +73,7 @@ namespace FoodServiceApi.Controllers
             {
                 Cardapio novoCarpio = _JsonAutoMapper.ConvertAutoMapperJson<Cardapio>(cardapioModel);
                 _CardapioService.Adicionar(novoCarpio);
-                return _JsonAutoMapper.Resposta("Cardapio criado com sucesso!");
+                return _JsonAutoMapper.Resposta("Categoria estoque criado com sucesso!");
             }
             catch (Exception e)
             {
@@ -102,7 +102,7 @@ namespace FoodServiceApi.Controllers
                     _CardapioService.CriarListaCardapio(item);
                 }
 
-                return _JsonAutoMapper.Resposta("Lista de cardápio criado com sucesso!");
+                return _JsonAutoMapper.Resposta("Categoria estoque criado com sucesso!");
 
             }
             catch (Exception e)
@@ -120,7 +120,7 @@ namespace FoodServiceApi.Controllers
             try
             {
                 _ProdutoItemRepository.Delete(codMenuSeq);
-                return _JsonAutoMapper.Resposta("Exclusão do menu realizado com sucesso!");
+                return _JsonAutoMapper.Resposta("Exclusão da categoria estoque realizado com sucesso!");
 
             }
             catch (Exception e)
@@ -150,7 +150,7 @@ namespace FoodServiceApi.Controllers
                     _CardapioService.CriarListaCardapio(item);
                 }
                 _ProdutoItemRepository.Update(cardapioMenu.codMenuSeq);
-                return _JsonAutoMapper.Resposta("Menu atualizado com sucesso!");
+                return _JsonAutoMapper.Resposta("Categoria atualizado com sucesso!");
 
             }
             catch (Exception e)
@@ -202,7 +202,7 @@ namespace FoodServiceApi.Controllers
                 var listaDeMenuCliente = _ProdutoItemRepository.ObterListaMenuAssociadoCardapio(id, cliente);
                 _CardapioService.Excluir(id);
                 _ProdutoItemRepository.DeleteProdutoAssociadoALista(listaDeMenuCliente);
-                return _JsonAutoMapper.Resposta("Exclusão do menu realizado com sucesso!");
+                return _JsonAutoMapper.Resposta("Exclusão da categoria realizado com sucesso!");
 
             }
             catch (Exception e)
@@ -238,7 +238,7 @@ namespace FoodServiceApi.Controllers
             try
             {
                 _CardapioService.DefenirCardapioPrincipal(codCardapio);
-                return _JsonAutoMapper.Resposta("Cardápio definido príncipal com sucesso!");
+                return _JsonAutoMapper.Resposta("Estoque definido príncipal com sucesso!");
 
             }
             catch (Exception e)
