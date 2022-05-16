@@ -13,7 +13,8 @@ using Refit;
 
 namespace BackOfficeFoodService.Controllers
 {
-    public class CardapioController : ControllerBase
+
+    public class CategoriaLookController : ControllerBase
     {
         // GET: CardapioController
         public async Task<ActionResult> Index()
@@ -28,6 +29,7 @@ namespace BackOfficeFoodService.Controllers
         }
 
         // GET: CardapioController/Create
+
         public async Task<ActionResult> Create()
         {
             try

@@ -42,6 +42,7 @@ namespace Aplication.Repository
             prod.nome = produto.nome;
             prod.descricao = produto.descricao;
             prod.valor = produto.valor;
+            prod.quantidade = produto.quantidade;
             prod.update = "1";
             _context.Update(prod).State = EntityState.Modified;
             _context.SaveChanges();

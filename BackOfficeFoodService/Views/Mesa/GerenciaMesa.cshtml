@@ -6,7 +6,7 @@
 }
 
 
-<h1>Gerenciar Mesa</h1>
+<h1>Caixa</h1>
 <hr />
 <div class="row">
     @foreach (var item in Model)
@@ -14,18 +14,18 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Mesa @Html.DisplayFor(modelItem => item.numero)</h5>
+                    <h5 class="card-title">Caixa @Html.DisplayFor(modelItem => item.numero)</h5>
                     @{
                         if (item.status == "F")
                         {
-                            <p class="card-text">Status da Mesa:  <img style="width:45px;height:45px" src="~/images/icons/close.png" alt="..." class="rounded-circle"> Fechada </p>
-                            <button onclick="AbrirMesa(@item.numero, @item.codigo)" type="button" class="btn btn-primary">Abrir Mesa</button>
+                            <p class="card-text">Status do Caixa:  <img style="width:45px;height:45px" src="~/images/icons/close.png" alt="..." class="rounded-circle"> Fechar caixa</p>
+                            <button onclick="AbrirMesa(@item.numero, @item.codigo)" type="button" class="btn btn-primary">Vender</button>
                         }
                         else
                         {
                             <p class="card-text">Status da Mesa:  <img style="background-color:chartreuse;width:45px;height:45px" src="~/images/icons/open-sign.png" alt="..." class="rounded-circle"> Aberto </p>
-                            <a href="@Url.Action("FechamentoMesa", "Mesa", new { codigo = item.codigo, numeroMesa = item.numero, seqAbreMesa = item.seqAbreMesa })" class="btn btn-secondary">Fecha Mesa</a>
-                            <a href="@Url.Action("MesaConsumo", "Mesa", new { codigo = item.codigo, numeroMesa = item.numero, seqAbreMesa = item.seqAbreMesa })" class="btn btn-success">Adicionar Consumo</a>
+                            <a href="@Url.Action("FechamentoMesa", "Mesa", new { codigo = item.codigo, numeroMesa = item.numero, seqAbreMesa = item.seqAbreMesa })" class="btn btn-secondary">Fechar caixa</a>
+                            <a href="@Url.Action("MesaConsumo", "Mesa", new { codigo = item.codigo, numeroMesa = item.numero, seqAbreMesa = item.seqAbreMesa })" class="btn btn-success">Vender</a>
                         }
                     }
                 </div>

@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h4>Criar cardápio</h4>
+            <h4>Nome Estoque</h4>
             <hr />
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -26,7 +26,7 @@
             </form>
         </div>
         <div class="col">
-            <h4>Lista de Cardápios</h4>
+            <h4>Lista de estoque categoria</h4>
             <hr />
             <table class="table-striped table-bordered">
                 <thead>
@@ -34,7 +34,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.titulo)
                         </th>
-                        <th>Cardápio Principal</th>
+                        <th>Estoque Principal</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -62,7 +62,7 @@
                             }
                         </td>
                         <td>
-                            <a href="#" ; onclick="CreateListCardapio('@item.idCardapio', '@item.titulo');">Lista de Menu </a>
+                            <a href="#" ; onclick="CreateListCardapio('@item.idCardapio', '@item.titulo');">Associar Categoria Look</a>
                             |<a href="#" ; onclick="BuscarCardapio('@item.idCardapio');">Alterar</a>
                             |<a href="#" ; onclick="ExcluirCardapio('@item.idCardapio', '@item.titulo');"> Excluir</a>
                         </td>

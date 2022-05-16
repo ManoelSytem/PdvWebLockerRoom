@@ -1,12 +1,12 @@
 ﻿@model BackOfficeFoodService.Models.ProdutoModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhe";
 }
 @await Html.PartialAsync("../Shared/ViewMensagem.cshtml")
-<h1>Details</h1>
+<h1>Detalhe</h1>
 <div>
-    <h4>ProdutoModel</h4>
+    <h4>Produto</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -36,6 +36,9 @@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.valorDecimal)
         </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.quantidade)
+        </dd>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.valorDecimal)
         </dd>

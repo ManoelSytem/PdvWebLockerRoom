@@ -10,9 +10,9 @@ namespace BackOfficeFoodService.Models
     { 
         public int idCardapio { get; set; }
         public string idUser { get; set; }
-        [Required(ErrorMessage = "Informe o nome título do cardápio.")]
+        [Required(ErrorMessage = "Informe o nome título do estoque.")]
         [StringLength(100, ErrorMessage = "O nome não deve exceder {1} caractere.")]
-        [Display(Name = "Título do cardápio")]
+        [Display(Name = "Título do estoque")]
         public string titulo { get; set; }
         public IEnumerable<CardapioModel> ListCardapio { get; set; }
         public IEnumerable<MenuModel> ListMenu { get; set; }

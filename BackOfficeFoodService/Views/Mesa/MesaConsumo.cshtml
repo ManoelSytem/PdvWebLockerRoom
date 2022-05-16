@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Mesa @TempData["numeroMesa"] - Consumos</h1>
+<h1>Caixa @TempData["numeroMesa"] - Produtos</h1>
 <hr />
 <a href="#" onclick="buscaCardapioPrincipal(@TempData["codigo"]);" class="btn btn-success">Adicionar Produtos</a>
 
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<h3>Lista de produtos adicionado a Mesa @TempData["numeroMesa"]</h3>
+<h3>Lista de produtos adicionado ao Caixa @TempData["numeroMesa"]</h3>
 <table class="table table-striped table-bordered">
     <thead>
         <tr>

@@ -822,8 +822,6 @@ E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFood
 E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.RazorCoreGenerate.cache
 E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Caixa\ContaAReceber.cshtml.g.cs
 E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Caixa\CupomNaoFiscal.cshtml.g.cs
-E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Cardapio\Create.cshtml.g.cs
-E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Cardapio\MenuListCardapio.cshtml.g.cs
 E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\Create.cshtml.g.cs
 E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
@@ -855,3 +853,5 @@ E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFood
 E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\BackOfficeFoodService.genruntimeconfig.cache
 E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\Index.cshtml.g.cs
 E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\Edit.cshtml.g.cs
+E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\CategoriaLook\Create.cshtml.g.cs
+E:\PdvWebLockerRoom\BackOfficeFoodService\obj\Debug\netcoreapp3.1\Razor\Views\CategoriaLook\MenuListCardapio.cshtml.g.cs

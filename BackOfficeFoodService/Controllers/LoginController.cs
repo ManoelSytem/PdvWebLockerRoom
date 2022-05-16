@@ -129,7 +129,7 @@ namespace BackOfficeFoodService.Controllers
             {
                 var loginAPI = RestService.For<ILoginAPI>(Servico.Servico.UrlBase());
                 loginAPI.Logout();
-                HttpContext.Session.Clear();
+                HttpContext.Session.Remove("Usuario"); ;
                 return RedirectToAction(nameof(Index));
             }
             catch(Exception ex)

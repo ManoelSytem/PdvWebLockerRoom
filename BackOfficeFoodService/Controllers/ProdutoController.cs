@@ -108,13 +108,14 @@ namespace BackOfficeFoodService.Controllers
                 {
                     if (AutenticanteVerifiy())
                     {
-                        ProdutoModel novoProduto = new ProdutoModel();
-                        novoProduto.nome = collection["nome"];
-                        novoProduto.descricao = collection["descricao"];
-                        novoProduto.valor = Convert.ToDecimal(collection["valorDecimal"]);
-                        novoProduto.cliente = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
+                        ProdutoModel produto = new ProdutoModel();
+                        produto.nome = collection["nome"];
+                        produto.descricao = collection["descricao"];
+                        produto.quantidade = Convert.ToInt32(collection["quantidade"]);
+                        produto.valor = Convert.ToDecimal(collection["valorDecimal"]);
+                        produto.cliente = HttpContext.Session.GetObject<Usuario>("Usuario").Email;
                         var IProduto = RestService.For<IProdutoServico>(Servico.Servico.UrlBaseFoodService());
-                        var result = await IProduto.Edicao(id,novoProduto);
+                        var result = await IProduto.Edicao(id, produto);
                         SetFlash(Enum.FlashMessageType.Success, result.Message);
                         return View();
                     }

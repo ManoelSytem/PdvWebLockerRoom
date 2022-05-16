@@ -74,7 +74,7 @@ namespace FoodServiceApi.Controllers
                     status = "A", //Mesa aberta
                 };
                 _ContaRepository.Add(novaConta);
-                return _JsonAutoMapper.Resposta("Mesa aberta com sucesso! Mesa disponível para adicionar consumos.");
+                return _JsonAutoMapper.Resposta("Caixa aberto com sucesso! Caixa disponível para venda.");
             }
             catch (Exception e)
             {

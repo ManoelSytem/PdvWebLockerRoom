@@ -11,6 +11,7 @@ namespace FoodServiceApi.Model
         public int codigo { get; set; }
         public string nome { get; set; }
         public string descricao { get; set; }
+        public int? quantidade { get; set; }
         public Decimal valor { get; set; }
         public string cliente { get; set; }
     }

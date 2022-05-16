@@ -14,6 +14,7 @@ namespace Dominio
         public string nome { get; set; }
         public string descricao { get; set; }
         public float valor { get; set; }
+        public int quantidade { get; set; }
         public string cliente { get; set; }
         public string delete { get; set; }
         public string update { get; set; }

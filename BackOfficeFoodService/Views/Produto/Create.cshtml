@@ -24,6 +24,11 @@
                 <span asp-validation-for="descricao" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="quantidade" class="control-label">Quantidade Estoque</label>
+                <input  type="number" asp-for="quantidade" class="valor form-control" />
+                <span asp-validation-for="quantidade" class="text-danger"></span>
+            </div>
+             <div class="form-group">
                 <label asp-for="valorDecimal" class="control-label">Preço R$</label>
                 <input asp-for="valorDecimal" class="valor form-control" />
                 <span asp-validation-for="valorDecimal" class="text-danger"></span>

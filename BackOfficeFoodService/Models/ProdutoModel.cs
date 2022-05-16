@@ -15,7 +15,9 @@ namespace BackOfficeFoodService.Models
         public string nome { get; set; }
         [Display(Name = "Descrição")]
         public string descricao { get; set; }
+        public int? quantidade { get; set; }
         public decimal valor { get; set; }
+        [Required(ErrorMessage = "Confirme o valor do produto")]
         public string valorDecimal { get; set; }
         public string cliente { get; set; }
 
