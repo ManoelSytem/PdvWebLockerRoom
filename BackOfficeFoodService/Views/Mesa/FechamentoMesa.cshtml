@@ -5,15 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Fechamento Mesa @TempData["numeroMesa"] - Consumos</h1>
+<h1>Fechamento Caixa @TempData["numeroMesa"] - Compras do dia : a definir</h1>
 <hr />
 @{
     if (Model.Count > 0)
     {
         <div class="alert alert-warning" role="alert">
             <p>
-                Atenção! Realize a revisão do item produto adicionado a mesa. Após isso realize a confirmação.
-                Após a confirmação será gerado um CUPOM NÃO FISCAL de saída. Relize a baixa no caixa após o pagamento do cliente. Caixa>Contas a Receber.
+                Atenção! Realize a revisão das compras do dia. Após isso realize a confirmação.
+                Após a confirmação será gerado um CUPOM NÃO FISCAL de saída de todas as compras da data inicial da abertura do caixa.
             </p>
         </div>
     }
@@ -21,8 +21,8 @@
     {
         <div class="alert alert-warning" role="alert">
             <p>
-                Atenção! Verifique se Status da mesa @TempData["numeroMesa"] se encontra fechada em: Mesa>Gerenciar Mesa. <br />
-                Se a mesa se encontra aberta verifque se existe produto adicionado a Mesa  @TempData["numeroMesa"]  em: Mesa>Gerenciar Mesa>Adicionar Consumo.
+                Atenção! Verifique se Status do Caixa @TempData["numeroMesa"] se encontra fechado em: Caixa>Gerenciar Caixa. <br />
+                Se o Caixa se encontra aberta verifique se existe produto adicionado ao Caixa  @TempData["numeroMesa"]  em: Caixa>Gerenciar Caixa>Adicionar Produto.
             </p>
         </div>
     }

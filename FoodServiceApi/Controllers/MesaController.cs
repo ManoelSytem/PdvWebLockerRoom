@@ -48,7 +48,7 @@ namespace FoodServiceApi.Controllers
                 Mesa mesa = _JsonAutoMapper.ConvertAutoMapperJson<Mesa>(mesaModel);
                 mesa.status = StatusMesa.Fechado.Value;
                 _MesaRepository.Add(mesa);
-                return _JsonAutoMapper.Resposta("Mesa criada com sucesso");
+                return _JsonAutoMapper.Resposta("Caixa criado com sucesso");
             }
             catch (Exception e)
             {
@@ -105,7 +105,7 @@ namespace FoodServiceApi.Controllers
                 contaAberta.dataFechamento = DateTime.Now;
 
                 _ContaRepository.Update(contaAberta);
-                return _JsonAutoMapper.Resposta("Mesa fechada sucesso! "+"\r\n"+" Realize a Baixa da mesa no Caixa informando o número do Pedido : " + mesa.seqAbreMesa+ ". " + "\r\n" + "Para visualizar código do Pedido, consulte no Modulo do Sistema em: Caixa>Cupom fiscal");
+                return _JsonAutoMapper.Resposta("Caixa fechado sucesso! "+"\r\n"+" Realize a Baixa da Venda no informando o número do Pedido : " + mesa.seqAbreMesa+ ". " + "\r\n" + "Para visualizar código do Pedido, consulte no Modulo do Sistema em: Caixa>Cupom fiscal");
             }
             catch (Exception e)
             {
@@ -136,7 +136,7 @@ namespace FoodServiceApi.Controllers
                 consumo.seqAbreMesa = mesa.seqAbreMesa;
 
                 _ConsumoRepository.Add(consumo);
-                return _JsonAutoMapper.Resposta("Item produto adicionado com sucesso na mesa "+mesa.numero+".");
+                return _JsonAutoMapper.Resposta("Item produto adicionado com sucesso Caixa " + mesa.numero+".");
             }
             catch (Exception e)
             {
@@ -167,7 +167,7 @@ namespace FoodServiceApi.Controllers
                 consumo.seqAbreMesa = mesa.seqAbreMesa;
 
                 _ConsumoRepository.Add(consumo);
-                return _JsonAutoMapper.Resposta("Item produto adicionado com sucesso na mesa " + mesa.numero + ".");
+                return _JsonAutoMapper.Resposta("Item produto adicionado com sucesso Caixa " + mesa.numero + ".");
             }
             catch (Exception e)
             {
@@ -206,7 +206,7 @@ namespace FoodServiceApi.Controllers
             {
                 var mesa = _MesaRepository.GetbyId(codMesa);
                 _ConsumoRepository.DeleteProdutoConsumoMesa(codigoItemConsumo);
-                return _JsonAutoMapper.Resposta("Produto excluído da Mesa " + mesa.numero + ".");
+                return _JsonAutoMapper.Resposta("Produto excluído do Caixa " + mesa.numero + ".");
                 
             }
             catch (Exception ex)
@@ -223,7 +223,7 @@ namespace FoodServiceApi.Controllers
             try
             {
                 Mesa mesa = _JsonAutoMapper.ConvertAutoMapperJson<Mesa>(mesaModel);
-                return _JsonAutoMapper.Resposta("Mesa alterada com sucesso!");
+                return _JsonAutoMapper.Resposta("Caixa alterado com sucesso!");
             }
             catch (Exception e)
             {

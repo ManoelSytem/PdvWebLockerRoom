@@ -1,6 +1,6 @@
 ﻿function buscaCardapioPrincipal(codMesa) {
     $.ajax({
-        url: "/Cardapio/ObterCardapioPrincipal",
+        url: "/CategoriaLook/ObterCardapioPrincipal",
         type: 'get',
         cache: false,
         async: true,
@@ -19,7 +19,7 @@
 function buscaListaCardapioCardapioPrincipal(idcardapio, codMesa) {
     $("#wait").css("display", "block");
     $.ajax({
-        url: "/Cardapio/BuscarMenuListaCardapio",
+        url: "/CategoriaLook/BuscarMenuListaCardapio",
         type: 'get',
         data: { idCardapio: idcardapio },
         cache: false,

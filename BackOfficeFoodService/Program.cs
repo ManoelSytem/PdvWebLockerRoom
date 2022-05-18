@@ -21,7 +21,7 @@ namespace BackOfficeFoodService
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls("https://localhost:5004/");
+                    webBuilder.UseUrls("http://localhost:5004/");
                 });
     }
 }
