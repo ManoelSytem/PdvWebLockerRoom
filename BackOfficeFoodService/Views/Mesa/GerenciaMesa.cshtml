@@ -16,14 +16,14 @@
                 <div class="card-body">
                     <h5 class="card-title">Caixa @Html.DisplayFor(modelItem => item.numero)</h5>
                     @{
-                        if (item.status == "F")
+                        if (item.statusCaixa == "F")
                         {
                             <p class="card-text">Status do Caixa:  <img style="width:45px;height:45px" src="~/images/icons/close.png" alt="..." class="rounded-circle"> Fechar caixa</p>
                             <button onclick="AbrirMesa(@item.numero, @item.codigo)" type="button" class="btn btn-primary">Vender</button>
                         }
                         else
                         {
-                            <p class="card-text">Status da Mesa:  <img style="background-color:chartreuse;width:45px;height:45px" src="~/images/icons/open-sign.png" alt="..." class="rounded-circle"> Aberto </p>
+                            <p class="card-text">Status do Caixa:  <img style="background-color:chartreuse;width:45px;height:45px" src="~/images/icons/open-sign.png" alt="..." class="rounded-circle"> Aberto </p>
                             <a href="@Url.Action("FechamentoMesa", "Mesa", new { codigo = item.codigo, numeroMesa = item.numero, seqAbreMesa = item.seqAbreMesa })" class="btn btn-secondary">Fechar caixa</a>
                             <a href="@Url.Action("MesaConsumo", "Mesa", new { codigo = item.codigo, numeroMesa = item.numero, seqAbreMesa = item.seqAbreMesa })" class="btn btn-success">Vender</a>
                         }

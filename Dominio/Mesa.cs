@@ -14,5 +14,6 @@ namespace Dominio
          public  int numero { get; set; }
          public string status { get; set; }
          public string seqAbreMesa { get; set; }
+         public string statusCaixa { get; set; }
     }
 }

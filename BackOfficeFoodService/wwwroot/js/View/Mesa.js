@@ -130,17 +130,17 @@ function AbrirMesa(numeroMesa, codMesa) {
 
 
 function FechamentoMesa(codMesa, seqAbreMesa, numeroMesa,totalFechamento) {
-    $("#ModalConfirm").modal();
-    $("#ModalConfirm .modal-body").text("Atenção, deseja realizar fechamento da Mesa " + numeroMesa + " ?");
+    $("#ModalConfirmVenda").modal();
+    $("#ModalConfirmVenda .modal-body").text("Atenção, finalizar venda Caixa " + numeroMesa + " ?");
 
-    $("#ButtonConfirm").text('Confirmar');
+    $("#ButtonConfirmVenda").text('Confirmar');
     let btn = document.querySelector('.alert-confirm')
     
     if (!!btn) {
         btn.addEventListener('click', function (evt) {
             //Bloqueando bottão aguardando finalização
-            $("#ButtonConfirm").prop("disabled", true);
-            $("#ModalConfirm .modal-body").text("Aguarde... Realizando fechamento na Mesa " + numeroMesa + "...");
+            $("#ButtonConfirmVenda").prop("disabled", true);
+            $("#ModalConfirmVenda .modal-body").text("Aguarde... Processado a venda Caixa " + numeroMesa + "...");
 
             $.ajax({
                 url: "/Mesa/FechamentoMesa",
@@ -150,11 +150,11 @@ function FechamentoMesa(codMesa, seqAbreMesa, numeroMesa,totalFechamento) {
                 async: true,
             }).done(function (data) {
 
-                //Processo de gerar cupom não fiscal apos finalização com sucesso do fechamento
-                $("#ModalConfirm .modal-body").text(data['description']);
-                $("#ButtonConfirm").text('Gerar CUPOM NÃO FISCAL');
-                $("#ButtonConfirm").css('background-color', 'black');
-                $("#ButtonConfirm").prop("disabled", false);
+                //Processo de gerar cupom não fiscal apos finalização com sucesso da venda
+                $("#ModalConfirmVenda .modal-body").text(data['description']);
+                $("#ButtonConfirmVenda").text('Gerar CUPOM NÃO FISCAL');
+                $("#ButtonConfirmVenda").css('background-color', 'black');
+                $("#ButtonConfirmVenda").prop("disabled", false);
 
                 btn.addEventListener('click', function (evt) {
                     window.location = '/Caixa/CupomNaoFiscal?seqAbreMesa='+seqAbreMesa;

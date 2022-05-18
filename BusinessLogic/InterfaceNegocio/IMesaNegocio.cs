@@ -8,5 +8,6 @@ namespace Aplication.InterfaceNegocio
     public interface IMesaNegocio 
     {
         public void VerificarMesaAberta(Mesa mesa);
+        public void VerificarContaFechada(Conta conta);
     }
 }

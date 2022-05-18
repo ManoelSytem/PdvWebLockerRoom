@@ -45,6 +45,12 @@ namespace Aplication.Repository
             return Convert.ToString(codMesa+ numeroMesa);
         }
 
+        public string NovaSeqCaixa()
+        {
+           string maxSeqAbreMesa = _context.Mesa.Max(u => u.seqAbreMesa);
+           return maxSeqAbreMesa = Convert.ToString(Convert.ToInt32(maxSeqAbreMesa) + 1);
+        }
+
         public void edit(Mesa mesa)
         {
             _repositoryGeneric.Update(mesa);

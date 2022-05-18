@@ -19,7 +19,7 @@ namespace FoodServiceApi.Controllers
     [ApiController]
     public class MesaController : ControllerBase
     {
-        
+
         private readonly IJsonAutoMapper _JsonAutoMapper;
         private readonly IMesaNegocio _IMesaNegocio;
         private readonly IConsumoRepository _ConsumoRepository;
@@ -27,7 +27,7 @@ namespace FoodServiceApi.Controllers
         public readonly IContaRepository _ContaRepository;
         private readonly MesaRepository _MesaRepository;
 
-        public MesaController(IJsonAutoMapper jsonAutoMapper, IMesaNegocio _imesaNegocio, 
+        public MesaController(IJsonAutoMapper jsonAutoMapper, IMesaNegocio _imesaNegocio,
             IConsumoRepository IConsumoRepository, IContaRepository _contaRepository,
             MesaRepository mesaRepository, ProdutoRepository _produtoRepository)
         {
@@ -64,14 +64,15 @@ namespace FoodServiceApi.Controllers
             {
                 var mesa = _MesaRepository.GetbyId(codMesa);
                 mesa.status = StatusMesa.Aberto.Value;
-                mesa.seqAbreMesa = _MesaRepository.ObterUltimaSeqAbreMesa(codMesa,numeroMesa);
+                mesa.seqAbreMesa = _MesaRepository.ObterUltimaSeqAbreMesa(codMesa, numeroMesa);
+                mesa.statusCaixa = "A";
                 _MesaRepository.update(mesa);
                 var novaConta = new Conta()
                 {
                     dataAbertura = DateTime.Now,
                     seqAbreMesa = mesa.seqAbreMesa,
-                    numeroMesa =  mesa.numero,
-                    status = "A", //Mesa aberta
+                    numeroMesa = mesa.numero,
+                    status = "A", //Mesa aberta,
                 };
                 _ContaRepository.Add(novaConta);
                 return _JsonAutoMapper.Resposta("Caixa aberto com sucesso! Caixa disponível para venda.");
@@ -89,6 +90,8 @@ namespace FoodServiceApi.Controllers
         {
             try
             {
+                var contaPendente = _ContaRepository.ObterConta(seqAbreMesa);
+                _IMesaNegocio.VerificarContaFechada(contaPendente);
                 var mesa = _MesaRepository.GetbyId(codMesa);
                 mesa.status = StatusMesa.Fechado.Value;
                 var listConsumo = _ConsumoRepository.ObterListarConsumoMesa(seqAbreMesa);
@@ -97,15 +100,33 @@ namespace FoodServiceApi.Controllers
                     consumo.status = "F";
                     _ConsumoRepository.Update(consumo);
                 }
+
+                mesa.seqAbreMesa = _MesaRepository.NovaSeqCaixa();
+
+                var conta = _ContaRepository.ObterConta(mesa.seqAbreMesa);
+
+                if (conta == null)
+                {
+                    var novaConta = new Conta()
+                    {
+                        dataAbertura = DateTime.Now,
+                        seqAbreMesa = mesa.seqAbreMesa,
+                        numeroMesa = mesa.numero,
+                        status = "A", //Conta aberta devido caixa se encontra aberto.
+                    };
+                    _ContaRepository.Add(novaConta);
+                }
+
                 _MesaRepository.update(mesa);
 
                 var contaAberta = _ContaRepository.ObterConta(seqAbreMesa);
-                contaAberta.status = "P"; //Pendente de pagamento e baixa no caixa
+                contaAberta.status = "P"; //Pendente de pagamento e baixa no Finaceiro
                 contaAberta.total = totalFechamento;
                 contaAberta.dataFechamento = DateTime.Now;
-
+                contaAberta.seqAbreMesa = seqAbreMesa;
                 _ContaRepository.Update(contaAberta);
-                return _JsonAutoMapper.Resposta("Caixa fechado sucesso! "+"\r\n"+" Realize a Baixa da Venda no informando o número do Pedido : " + mesa.seqAbreMesa+ ". " + "\r\n" + "Para visualizar código do Pedido, consulte no Modulo do Sistema em: Caixa>Cupom fiscal");
+
+                return _JsonAutoMapper.Resposta("Venda realizada com sucesso! " + "\r\n" + " Realize a Baixa da Venda informando o número do Pedido : " + seqAbreMesa + ". " + "\r\n" + "Para gerar novamente cupom não fiscal, consulte no Modulo do Sistema em: Caixa>Cupom fiscal informado número do pedido.");
             }
             catch (Exception e)
             {
@@ -136,15 +157,13 @@ namespace FoodServiceApi.Controllers
                 consumo.seqAbreMesa = mesa.seqAbreMesa;
 
                 _ConsumoRepository.Add(consumo);
-                return _JsonAutoMapper.Resposta("Item produto adicionado com sucesso Caixa " + mesa.numero+".");
+                return _JsonAutoMapper.Resposta("Item produto adicionado com sucesso Caixa " + mesa.numero + ".");
             }
             catch (Exception e)
             {
                 return _JsonAutoMapper.Resposta("Falha!", e);
             }
         }
-
-
 
         [Route("AdicionaConsumoMesaPWA")]
         [HttpPost]
@@ -157,7 +176,7 @@ namespace FoodServiceApi.Controllers
                     codMesa = codMesa,
                     codProduto = codProduto,
                     horaPedido = DateTime.Now,
-                    
+
                 };
                 var mesa = _MesaRepository.GetbyId(Convert.ToInt32(consumoModel.codMesa));
                 _IMesaNegocio.VerificarMesaAberta(mesa);
@@ -182,10 +201,10 @@ namespace FoodServiceApi.Controllers
         public List<ConsumoModel> ObterConsumoDaMesa(string seqAbreMesa, bool EcupomFiscal)
         {
             List<Consumo> listConsumo;
-            if (EcupomFiscal) 
+            if (EcupomFiscal)
             { listConsumo = _ConsumoRepository.ObterListarConsumoMesaFechamento(seqAbreMesa); }
             else { listConsumo = _ConsumoRepository.ObterListarConsumoMesa(seqAbreMesa); }
-           
+
             var listaConsumoModel = _JsonAutoMapper.ConvertAutoMapperListJson<ConsumoModel>(listConsumo);
             List<ConsumoModel> listConsumoProduto = new List<ConsumoModel>();
             foreach (ConsumoModel consumo in listaConsumoModel)
@@ -194,7 +213,7 @@ namespace FoodServiceApi.Controllers
                 consumo.produto = _JsonAutoMapper.ConvertAutoMapperJson<ProdutoModel>(produto);
                 listConsumoProduto.Add(consumo);
             }
-          
+
             return listConsumoProduto;
         }
 
@@ -207,7 +226,7 @@ namespace FoodServiceApi.Controllers
                 var mesa = _MesaRepository.GetbyId(codMesa);
                 _ConsumoRepository.DeleteProdutoConsumoMesa(codigoItemConsumo);
                 return _JsonAutoMapper.Resposta("Produto excluído do Caixa " + mesa.numero + ".");
-                
+
             }
             catch (Exception ex)
             {

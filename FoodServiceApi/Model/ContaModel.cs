@@ -18,6 +18,7 @@ namespace FoodServiceApi.Model
         public decimal valorSaida { get; set; }
         public decimal totalTroco { get; set; }
         public string status { get; set; }
+        public string statusCaixa { get; set; }
 
     }
 }
