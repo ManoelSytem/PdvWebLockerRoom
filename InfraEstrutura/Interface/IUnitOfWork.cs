@@ -11,7 +11,7 @@ namespace InfraEstrutura.Interface
         IRepository<Cliente> ClienteRepository { get; }
         IRepository<Produto> ProdutoRepository { get; }
         IRepository<ListaItemProduto> ProdutoItemRepository { get; }
-       
+
         void Commit();
     }
 }

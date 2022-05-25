@@ -41,7 +41,13 @@ namespace Aplication.Servico
            return  _uow.ProdutoRepository.GetById(p => p.codigo == codigoProduto);
         }
 
-       
+        public void RealizarBaixaEstoque(int codigoProduto)
+        {
+           var produto =  _uow.ProdutoRepository.GetById(p => p.codigo == codigoProduto);
+            produto.quantidade--;
+
+           _uow.ProdutoRepository.Update(produto);
+        }
 
         public void Dispose()
         {

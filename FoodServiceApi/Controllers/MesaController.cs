@@ -6,7 +6,9 @@ using Aplication.Enum;
 using Aplication.Interface;
 using Aplication.InterfaceNegocio;
 using Aplication.Model;
+using Aplication.Negocio;
 using Aplication.Repository;
+using Aplication.Servico;
 using Aplication.Util;
 using Dominio;
 using FoodServiceApi.Model;
@@ -26,10 +28,10 @@ namespace FoodServiceApi.Controllers
         private readonly ProdutoRepository _ProdutoRepository;
         public readonly IContaRepository _ContaRepository;
         private readonly MesaRepository _MesaRepository;
-
+        private readonly ProdutoService _ProdutoService;
         public MesaController(IJsonAutoMapper jsonAutoMapper, IMesaNegocio _imesaNegocio,
             IConsumoRepository IConsumoRepository, IContaRepository _contaRepository,
-            MesaRepository mesaRepository, ProdutoRepository _produtoRepository)
+            MesaRepository mesaRepository, ProdutoRepository _produtoRepository, ProdutoService produtoService)
         {
             _JsonAutoMapper = jsonAutoMapper;
             _MesaRepository = mesaRepository;
@@ -37,6 +39,7 @@ namespace FoodServiceApi.Controllers
             _IMesaNegocio = _imesaNegocio;
             _ContaRepository = _contaRepository;
             _ProdutoRepository = _produtoRepository;
+            _ProdutoService = produtoService;
         }
 
         [Route("Create")]
@@ -125,8 +128,8 @@ namespace FoodServiceApi.Controllers
                 contaAberta.dataFechamento = DateTime.Now;
                 contaAberta.seqAbreMesa = seqAbreMesa;
                 _ContaRepository.Update(contaAberta);
-
-                return _JsonAutoMapper.Resposta("Venda realizada com sucesso! " + "\r\n" + " Realize a Baixa da Venda informando o número do Pedido : " + seqAbreMesa + ". " + "\r\n" + "Para gerar novamente cupom não fiscal, consulte no Modulo do Sistema em: Caixa>Cupom fiscal informado número do pedido.");
+                
+                return _JsonAutoMapper.Resposta("Venda realizada com sucesso! " + "\r\n" + " Realize a Baixa da Venda informando o número do Pedido : " + seqAbreMesa + ". " + "\r\n" + "Para gerar novamente cupom não fiscal, consulte no Modulo do Sistema em: Finaceiro>Contas a pagar. Informado o número do pedido.");
             }
             catch (Exception e)
             {
@@ -149,10 +152,14 @@ namespace FoodServiceApi.Controllers
         {
             try
             {
+                Consumo consumo = _JsonAutoMapper.ConvertAutoMapperJson<Consumo>(consumoModel);
+
+                ProdutoNegocio produtoNegocio = new ProdutoNegocio(_ProdutoService);
+                produtoNegocio.VerificaQuantidadeProdutoEstoque(consumo.codProduto);
+
                 var mesa = _MesaRepository.GetbyId(Convert.ToInt32(consumoModel.codMesa));
                 _IMesaNegocio.VerificarMesaAberta(mesa);
 
-                Consumo consumo = _JsonAutoMapper.ConvertAutoMapperJson<Consumo>(consumoModel);
                 consumo.horaPedido = DateTime.Now;
                 consumo.seqAbreMesa = mesa.seqAbreMesa;
 

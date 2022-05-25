@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Aplication.Interface;
 using Aplication.Model;
+using Aplication.Servico;
 using Aplication.Util;
 using Dominio;
 using FoodServiceApi.Model;
@@ -18,10 +19,16 @@ namespace FoodServiceApi.Controllers
     {
         public readonly IContaRepository _ContaRepository;
         private readonly IJsonAutoMapper _JsonAutoMapper;
-        public CaixaController(IContaRepository _contaRepository, IJsonAutoMapper _jsonAutoMapper)
+        private readonly ProdutoService _ProdutoService;
+        private readonly IConsumoRepository _ConsumoRepository;
+
+        public CaixaController(IContaRepository _contaRepository, IJsonAutoMapper _jsonAutoMapper,
+             ProdutoService  produtoService, IConsumoRepository consumoRepository)
         {
             _ContaRepository = _contaRepository;
             _JsonAutoMapper = _jsonAutoMapper;
+            _ProdutoService = produtoService;
+            _ConsumoRepository = consumoRepository;
         }
 
         [Route("ObterContaPendente")]
@@ -60,7 +67,14 @@ namespace FoodServiceApi.Controllers
                 conta.formaPagamento = formaPgto;
                 conta.dataBaixaConta = DateTime.Now;
                 conta.status = "F";
+                var listproduto = _ConsumoRepository.ObterListaDeProdutoPorConsumoMesa(conta.seqAbreMesa);
+                foreach (var item in listproduto)
+                {
+                    _ProdutoService.RealizarBaixaEstoque(item.codigo);
+                }
+
                 _ContaRepository.Update(conta);
+
                 return _JsonAutoMapper.Resposta("Baixa realizada com sucesso!");
             }
             catch (Exception e)

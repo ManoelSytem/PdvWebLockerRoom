@@ -47,21 +47,31 @@ namespace Aplication.Negocio
 
                     if (listProduto.Count > 1)
                     {
-                        return " Este produto esta associado aos seguintes Menu cardápio: " + cardapio;
+                        return "Este produto não esta associado nenhuma categoria no estoque: " + cardapio;
                     }else if(listProduto.Count == 1)
                     {
-                       return " Este produto esta associado ao seguinte Menu cardápio: " + cardapio;
+                       return "Este produto esta associado a seguinte categoria no estoque: " + cardapio;
                     }
 
                 }
 
-                return "Produto não esta associado a nenhum Menu cardápio.";
+                return "Produto não esta associado a nenhuma categoria no estoque.";
 
             }
             catch (Exception e)
             {
-                throw new NotImplementedException("Falha ao Verificar Produto menu, contatar adiministrador");
+                throw new NotImplementedException("Falha ao Verificar Produto cetegoria, contatar Analista desenvolvedor");
             }
+        }
+
+        public void VerificaQuantidadeProdutoEstoque(string codProduto)
+        {
+            var produto = _ProdutoService.ObterProdutoPorId(Convert.ToInt32(codProduto));
+
+                if (produto.quantidade == 0)
+                {
+                    throw new NotImplementedException("Produto esta em falta no estoque. Verifique a quantidade.");
+                }
         }
 
     }

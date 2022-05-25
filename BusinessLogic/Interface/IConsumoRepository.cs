@@ -13,5 +13,6 @@ namespace Aplication.Interface
         public List<Consumo> ObterListarConsumoMesa(string seqAbreMesa);
         public List<Consumo> ObterListarConsumoMesaFechamento(string seqAbreMesa);
         public void Update(Consumo consumo);
+
     }
 }

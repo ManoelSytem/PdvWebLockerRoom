@@ -19,8 +19,8 @@
             $('#total').val(totalFormatado);
             $('#totalReal').val(data['total']);
             $('#numeroMesa').text("Mesa Número: " + data['numeroMesa']);
-            $('#DataAbertura').text("Data Hora abertura mesa: " + todayDataAbertura.toLocaleString());
-            $('#DataFehamento').text("Data Hora Fechamento mesa: " + todayDataFechamento.toLocaleString());
+            $('#DataAbertura').text("Data Hora abertura Caixa: " + todayDataAbertura.toLocaleString());
+            $('#DataFehamento').text("Data Hora Fechamento Caixa: " + todayDataFechamento.toLocaleString());
             $('#CupomFiscal').append(
                 '<button onclick="ObterCupomFiscalNovaGuia(' + data['seqAbreMesa'] + ')" type = "button" class= "btn btn-dark" > Cupom Não fiscal</button>'
             );
