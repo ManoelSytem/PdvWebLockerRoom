@@ -18,7 +18,7 @@
             totalFormatado = formatarValorReal(total);
             $('#total').val(totalFormatado);
             $('#totalReal').val(data['total']);
-            $('#numeroMesa').text("Mesa Número: " + data['numeroMesa']);
+            $('#numeroMesa').text("Caixa: " + data['numeroMesa']);
             $('#DataAbertura').text("Data Hora abertura Caixa: " + todayDataAbertura.toLocaleString());
             $('#DataFehamento').text("Data Hora Fechamento Caixa: " + todayDataFechamento.toLocaleString());
             $('#CupomFiscal').append(

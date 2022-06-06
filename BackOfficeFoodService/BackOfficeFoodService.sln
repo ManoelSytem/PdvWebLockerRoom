@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30330.147
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackOfficeFoodService", "BackOfficeFoodService.csproj", "{4D38ED2E-13BA-4DF7-9901-A5DD2BF2C450}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodServiceApi", "..\FoodServiceApi\FoodServiceApi.csproj", "{BD26DAC0-5098-4BE4-88CD-3D046DDCF6DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4D38ED2E-13BA-4DF7-9901-A5DD2BF2C450}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D38ED2E-13BA-4DF7-9901-A5DD2BF2C450}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D38ED2E-13BA-4DF7-9901-A5DD2BF2C450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD26DAC0-5098-4BE4-88CD-3D046DDCF6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD26DAC0-5098-4BE4-88CD-3D046DDCF6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD26DAC0-5098-4BE4-88CD-3D046DDCF6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD26DAC0-5098-4BE4-88CD-3D046DDCF6DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
